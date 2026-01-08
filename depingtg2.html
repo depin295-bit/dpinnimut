@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>websitedepinganteng</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #050505;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at top, #1b1b1b, #050505);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      letter-spacing: 4px;
+    }
+
+    header p { color:#ccc; margin-top:15px; }
+
+    section { padding: 140px 8%; }
+
+    /* PARALLAX GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 60px;
+      perspective: 1200px;
+    }
+
+    .photo {
+      position: relative;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      transition: transform 1s ease;
+    }
+
+    .photo:hover {
+      transform: translateZ(40px) scale(1.03);
+    }
+
+.photo img {
+  width: 100%;
+  aspect-ratio: 2482 / 3508; /* A4 Portrait */
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.85);
+}
+
+
+    .photo-title {
+      position:absolute;
+      inset:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      border-radius:28px;
+      opacity:0;
+      transition:opacity .6s ease;
+    }
+
+    .photo.active .photo-title { opacity:1; }
+
+    .photo-title h3 {
+      font-family:'Playfair Display', serif;
+      font-size:2rem;
+      text-align:center;
+    }
+
+    /* FULLSCREEN VIEW */
+    .viewer {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.92);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:999;
+    }
+
+    .viewer.active { display:flex; }
+
+    .viewer-content {
+      max-width:80%;
+      animation: zoomIn 1s ease;
+      text-align:center;
+    }
+
+    .viewer-content img {
+      width:100%;
+      max-height:80vh;
+      object-fit:contain;
+      border-radius:30px;
+    }
+
+    .viewer-content h2 {
+      margin-top:25px;
+      font-family:'Playfair Display', serif;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(.7); opacity:0; }
+      to { transform: scale(1); opacity:1; }
+    }
+
+    .music-control {
+      position:fixed;
+      bottom:35px;
+      right:35px;
+      background:rgba(255,255,255,0.12);
+      padding:14px 22px;
+      border-radius:60px;
+      backdrop-filter: blur(20px);
+      cursor:pointer;
+      z-index:1000;
+    }
+
+    footer { text-align:center; padding:60px; color:#999; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div data-aos="fade-up" data-aos-duration="2000">
+    <h1>depin ganteng</h1>
+    <p>Pupatera, Tempat di mana buku dan kopi bertemu—tempat membaca, berdiskusi, dan bersantai dalam suasana yang hangat dan nyaman.</p>
+  </div>
+</header>
+
+<!-- ABOUT ME -->
+<section>
+  <div style="max-width:900px; margin:auto; text-align:center" data-aos="fade-up">
+    <h2 style="font-family:'Playfair Display',serif; font-size:2.8rem; margin-bottom:30px">Tentang Saya</h2>
+    <p style="font-size:1.05rem; line-height:1.9; color:#cfcfcf">
+      Saya adalah individu kreatif yang berfokus pada kualitas, detail, dan penyampaian visual yang kuat.
+      Melalui pendekatan cinematic dan desain premium, saya menghadirkan karya yang tidak hanya terlihat
+      indah, tetapi juga memiliki makna dan nilai profesional.
+    </p>
+    <p style="margin-top:25px; font-size:1.05rem; line-height:1.9; color:#cfcfcf">
+      Website ini dirancang sebagai representasi identitas, portofolio visual, serta media presentasi proposal
+      yang eksklusif untuk klien, partner, maupun investor.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="gallery">
+    <div class="photo" onclick="openViewer(this)" data-title="Launching Zine">
+      <img src="zine.jpg">
+      <div class="Launching Zine"><h3>Launching Zine</h3></div>
+    </div>
+    <div class="photo" onclick="openViewer(this)" data-title="Feed Instagram">
+      <img src="feedig1.jpg">
+      <div class="Feed Instagram"><h3>Feed Instagram</h3></div>
+    </div>
+    <div class="photo" onclick="openViewer(this)" data-title="Feed Instagram">
+      <img src="feedig2.jpg">
+      <div class="Feed Instagram"><h3>Feed Instagram</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPOSAL SECTION -->
+<section>
+  <div style="text-align:center; margin-bottom:80px" data-aos="fade-up">
+    <h2 style="font-family:'Playfair Display',serif; font-size:2.8rem">Proposal</h2>
+    <p style="color:#bbb; margin-top:10px">Dokumen presentasi resmi</p>
+  </div>
+
+  <div class="proposal" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:60px">
+    <!-- Proposal Target dan Tujuan -->
+    <div class="page" data-aos="fade-right">
+      <h3 style="font-family:'Playfair Display',serif">Target dan Tujuan – Halaman 1</h3>
+      <p style="margin-top:20px">SISWA SMKN 8 SKA JURUSAN DESAIN KOMUNIKASI VISUAL (DKV)
+
+IDENTITAS PESERTA PKL
+
+Nama            : Devin Rendra Pratama
+Sekolah         : SMKN 8 SURAKARTA
+Jurusan         : Desain Komunikasi Visual (DKV)
+Kelas           : XII
+Tempat PKL      : Pupa Media
+Waktu PKL       : 3 (Tiga) Bulan
+
+I. Tujuan PKL
+Tujuan pelaksanaan PKL di Pupa Media adalah:
+1. Menambah pengalaman kerja di bidang desain dan media kreatif.
+2. Menerapkan ilmu Desain Komunikasi Visual yang telah dipelajari di sekolah.
+3. Meningkatkan keterampilan desain, kreativitas, dan penggunaan software desain.
+4. Melatih sikap disiplin, tanggung jawab, dan kerja sama tim.
+5. Mengenal dunia kerja yang profesional.
+</p>
+    </div>
+    <div class="page" data-aos="fade-left">
+      <h3 style="font-family:'Playfair Display',serif">Target dan Tujuan – Halaman 2</h3>
+      <p style="margin-top:20px">II. Target PKL
+Target yang ingin dicapai selama PKL adalah:
+1. Target Keterampilan
+Mampu membuat desain sederhana seperti poster, konten media sosial, atau banner.
+Mampu menggunakan software desain yang digunakan di Pupa Media.
+Meningkatkan kemampuan editing dan visual komunikasi.
+2. Target Pengetahuan
+Memahami alur kerja pembuatan konten desain.
+Mengetahui proses kerja di perusahaan media kreatif.
+
+3. Target Sikap
+Disiplin dan bertanggung jawab terhadap tugas.
+Mampu bekerja secara mandiri maupun dalam tim.
+Memiliki etika kerja yang baik.
+
+III. Rencana Kegiatan PKL (3 Bulan)
+Bulan 1:
+Pengenalan lingkungan kerja Pupa Media.
+Observasi dan belajar dasar pekerjaan desain.
+Bulan 2:
+Mulai membantu dan mengerjakan tugas desain.
+Meningkatkan keterampilan desain.
+Bulan 3:
+Mengerjakan tugas secara mandiri.
+Evaluasi dan penyusunan laporan PKL.
+
+IV. Penutup
+Dengan pelaksanaan PKL di Pupa Media, diharapkan siswa memperoleh pengalaman dan keterampilan yang bermanfaat sebagai bekal memasuki dunia kerja.
+</p>
+    </div>
+
+    <!-- Konsep Desain Saya -->
+    <div class="page" data-aos="fade-right">
+      <h3 style="font-family:'Playfair Display',serif">Konsep Desain – Halaman 1</h3>
+      <p style="margin-top:20px">ZINE Bunga yang Mekar Tanpa Musim
+
+I. IDENTITAS 
+Judul : Bunga yang Mekar Tanpa Musim
+Jenis : Zine (publikasi independen)
+Perancang : Devin Rendra Pratama
+Tahun : 2026
+
+II. KONSEP DESAIN
+Zine Bunga yang Mekar Tanpa Musim mengusung konsep visual yang hangat, tenang, dan intim. Desain ini menjadi ruang reflektif bagi kata dan cerita, tanpa visual yang berlebihan.
+Judul merepresentasikan perasaan dan cerita yang tumbuh secara alami, tanpa terikat waktu atau keadaan—seperti bunga yang tetap mekar di luar musimnya.
+Tagline:
+“Sebait kata, secangkir cerita, dalam suasana hangat dan intim.”
+menjadi inti dari keseluruhan konsep visual dan narasi.
+</p>
+    </div>
+    <div class="page" data-aos="fade-left">
+      <h3 style="font-family:'Playfair Display',serif">Konsep Desain – Halaman 2</h3>
+      <p style="margin-top:20px">III. UNSUR VISUAL UTAMA
+
+Ilustrasi : Sketsa bunga bergaya hand-drawn sebagai simbol kelembutan dan pertumbuhan.
+Tipografi : Serif sederhana untuk kesan literer dan tenang.
+Warna : Palet netral dan lembut (krem, putih gading, abu-abu hangat).
+Layout : Terpusat dan lapang dengan pemanfaatan ruang kosong.
+
+IV. TUJUAN DESAIN
+1. Menciptakan identitas visual yang konsisten dan bermakna.
+2. Menghadirkan kedekatan emosional dengan pembaca.
+3. Mendukung isi tulisan agar tersampaikan secara jujur dan intim.
+</p>
+    </div>
+  </div>
+</section>
+
+<!-- FULLSCREEN VIEWER -->
+<div class="viewer" onclick="closeViewer()">
+  <div class="viewer-content">
+    <img id="viewerImg">
+    <h2 id="viewerTitle"></h2>
+  </div>
+</div>
+
+<div class="music-control" onclick="toggleMusic()">🎶 Music</div>
+
+<audio id="bgMusic" loop>
+  <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<footer>© 2026 • Website Depin Ganteng</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ once:true, offset:120 });
+
+  const music = document.getElementById('bgMusic');
+  let isPlaying = false;
+
+  function toggleMusic(){
+    isPlaying ? music.pause() : music.play();
+    isPlaying = !isPlaying;
+  }
+
+  function openViewer(el){
+    document.querySelectorAll('.photo').forEach(p=>p.classList.remove('active'));
+    el.classList.add('active');
+
+    document.getElementById('viewerImg').src = el.querySelector('img').src;
+    document.getElementById('viewerTitle').innerText = el.dataset.title;
+    document.querySelector('.viewer').classList.add('active');
+
+    if(isPlaying){ music.currentTime = 0; }
+  }
+
+  function closeViewer(){
+    document.querySelector('.viewer').classList.remove('active');
+  }
+</script>
+
+</body>
+</html>
